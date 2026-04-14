@@ -120,85 +120,97 @@ const handleLogout = () => {
   position: relative;
 }
 
+/* Sidebar context: button fills width, uses dark-surface colors */
 .profile-button {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0.875rem;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 120ms ease;
   font-family: inherit;
+  color: var(--text-on-dark);
 }
 
 .profile-button:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .avatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  color: white;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-on);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 0.75rem;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
   letter-spacing: 0.025em;
+  flex-shrink: 0;
 }
 
 .profile-name {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #0f172a;
+  flex: 1;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-on-dark);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chevron {
-  color: #64748b;
-  transition: transform 0.2s ease;
+  color: var(--text-on-dark-muted);
+  transition: transform 160ms ease;
+  flex-shrink: 0;
 }
 
 .chevron-open {
   transform: rotate(180deg);
 }
 
+/* Dropdown opens above the sidebar footer (bottom-anchored) */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  bottom: calc(100% + var(--space-2));
+  left: 0;
   right: 0;
-  min-width: 280px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  min-width: 260px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
   z-index: 1000;
   overflow: hidden;
 }
 
 .dropdown-header {
-  padding: 1rem;
+  padding: var(--space-4);
   display: flex;
-  gap: 0.875rem;
+  gap: var(--space-3);
   align-items: center;
-  background: #f8fafc;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
 }
 
 .avatar-large {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-on);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-md);
   letter-spacing: 0.025em;
   flex-shrink: 0;
 }
@@ -209,15 +221,18 @@ const handleLogout = () => {
 }
 
 .user-name {
-  font-weight: 600;
-  color: #0f172a;
-  font-size: 0.938rem;
-  margin-bottom: 0.25rem;
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .user-email {
-  font-size: 0.813rem;
-  color: #64748b;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -225,57 +240,66 @@ const handleLogout = () => {
 
 .dropdown-divider {
   height: 1px;
-  background: #e2e8f0;
-  margin: 0.5rem 0;
+  background: var(--border);
+  margin: var(--space-1) 0;
 }
 
 .dropdown-item {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 var(--space-1);
+  width: calc(100% - var(--space-2));
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: background 120ms ease;
   font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #334155;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
 }
 
 .dropdown-item:hover {
-  background: #f8fafc;
+  background: var(--bg-subtle);
 }
 
 .dropdown-item svg {
-  color: #64748b;
+  color: var(--text-secondary);
   flex-shrink: 0;
 }
 
 .dropdown-item.logout {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .dropdown-item.logout svg {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .dropdown-item.logout:hover {
-  background: #fef2f2;
+  background: var(--danger-soft);
 }
 
 .task-badge {
   margin-left: auto;
-  background: #2563eb;
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.125rem 0.5rem;
-  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
   min-width: 20px;
   text-align: center;
+}
+
+/* Hide the label when sidebar collapses to icon-only */
+@media (max-width: 1024px) {
+  .profile-name, .chevron { display: none; }
+  .profile-button { justify-content: center; }
 }
 </style>
